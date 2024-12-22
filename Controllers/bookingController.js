@@ -1,5 +1,6 @@
-import sendEmail from "../Utils/mailer";
-import Booking from "../models/Booking"; // Import the Booking model if not already imported
+import sendEmail from "../Utils/mailer.js";
+import Booking from "../models/bookingModel.js"; // Import the Booking model if not already imported
+import Post from '../Models/postModel.js'
 
 export const payment = async (req, res) => {
   try {
@@ -98,13 +99,13 @@ export const payment = async (req, res) => {
             <p><strong>Service ID:</strong> ${post}</p>
             <p><strong>Booking Date:</strong> ${date}</p>
             <p><strong>Number of Tickets:</strong> ${ticketQuantity}</p>
-            <p><strong>Total Price:</strong> $${totalPrice.toFixed(2)}</p>
+            <p><strong>Total Price:</strong> $${totalPrice}</p>
             <p>Thank you for choosing our service. We look forward to serving you!</p>
-            <a href="https://example.com/manage-booking" class="button">Manage Your Booking</a>
+            <a href="https://github.com/Muthukumar-20?tab=repositories" class="button">Manage Your Booking</a>
           </div>
           <div class="footer">
             <p>This is an automated email. Please do not reply to this message.</p>
-            <p>&copy; ${new Date().getFullYear()} Our Company. All rights reserved.</p>
+            <p>&copy; ${new Date().getFullYear()} Our Event Management Company. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -133,4 +134,22 @@ export const payment = async (req, res) => {
       error: error.message,
     });
   }
+};
+
+//find the post details for booking page
+export const findPostDetails = async (req, res) => {
+  const { _id } = req.body;
+  if (!_id) {
+    return res.status(400).json({ message: "Post ID is required" });
+  }
+  // Fetch post details
+  const findDetails = await Post.findById(_id);
+  if (!findDetails) {
+    return res.status(404).json({ message: "Post not found" });
+  }
+  // console.log(_id);
+  if (!findDetails) {
+    return res.status(404).json({ message: "Post not found" });
+  }
+  res.status(200).json({ message: "get Successfully", findDetails });
 };
