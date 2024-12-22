@@ -1,5 +1,5 @@
 import sendEmail from "../Utils/mailer.js";
-import Booking from "../models/bookingModel.js"; // Import the Booking model if not already imported
+import Booking from "../Models/bookingModel.js"; // Import the Booking model if not already imported
 import Post from '../Models/postModel.js'
 
 export const payment = async (req, res) => {
