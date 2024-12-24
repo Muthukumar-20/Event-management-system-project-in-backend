@@ -99,7 +99,7 @@ export const payment = async (req, res) => {
             <p><strong>Service ID:</strong> ${post}</p>
             <p><strong>Booking Date:</strong> ${date}</p>
             <p><strong>Number of Tickets:</strong> ${ticketQuantity}</p>
-            <p><strong>Total Price:</strong> $${totalPrice}</p>
+            <p><strong>Total Price:</strong> ₹${totalPrice}</p>
             <p>Thank you for choosing our service. We look forward to serving you!</p>
             <a href="https://github.com/Muthukumar-20?tab=repositories" class="button">Manage Your Booking</a>
           </div>
